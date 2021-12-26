@@ -9,6 +9,8 @@ import {
     UPDATE_NEWMEMBER_NAME,
     UPDATE_NEWMEMBER_AGE,
     ADD_MEMBER,
+    REQUEST_DELETE_MEMBER,
+    DELETE_MEMBER,
 } from "./memberTypes";
 
 export const requestMember = createAction(REQUEST_MEMBER);
@@ -23,3 +25,6 @@ export const updateNewMemberName = createAction(UPDATE_NEWMEMBER_NAME);
 export const updateNewMemberAge = createAction(UPDATE_NEWMEMBER_AGE);
 
 export const addMember = createAction(ADD_MEMBER);
+
+export const requestDeleteMember = createAction(REQUEST_DELETE_MEMBER);
+export const deleteMember = createAction(DELETE_MEMBER);

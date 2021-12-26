@@ -17,7 +17,7 @@ const lessonColumns = [
 ];
 
 const LessonPage = () => {
-    const lessons = useSelector((state) => state.lessons.lessons);
+    let lessons = useSelector((state) => state.lessons.lessons);
     const dispatch = useDispatch();
 
     useEffect(() => {

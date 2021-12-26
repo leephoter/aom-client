@@ -146,9 +146,12 @@ export default function Attendance() {
                         nextMonth={onNextMonth}
                         onSelect={onSelectDate}
                     />
-                    {lessons[0] === undefined
-                        ? renderLessonEmpty()
-                        : LessonButtonRender()}
+                    {
+                        // lessons[0] === undefined
+                        lessons === undefined
+                            ? renderLessonEmpty()
+                            : LessonButtonRender()
+                    }
                 </Col>
                 <Col className="attendance-content" span={19}>
                     <ContentBox>

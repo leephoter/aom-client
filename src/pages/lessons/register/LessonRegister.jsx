@@ -35,7 +35,6 @@ const LessonRegister = (props) => {
     const endTime = useSelector((state) => state.lessons.one.endTime);
     const nonMembers = useSelector((state) => state.lessons.one.nonMembers);
     const addMemberIds = useSelector((state) => state.lessons.one.addMemberIds);
-    console.log("nonMembers :>> ", nonMembers);
 
     useEffect(() => {
         dispatch(initForm());

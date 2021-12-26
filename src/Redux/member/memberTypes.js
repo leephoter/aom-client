@@ -9,3 +9,6 @@ export const UPDATE_MEMBER_AGE = "member/UPDATE_MEMBER_AGE";
 export const UPDATE_NEWMEMBER_NAME = "member/UPDATE_NEWMEMBER_NAME";
 export const UPDATE_NEWMEMBER_AGE = "member/UPDATE_NEWMEMBER_AGE";
 export const ADD_MEMBER = "member/ADD_MEMBER";
+
+export const REQUEST_DELETE_MEMBER = "member/REQUEST_DELETE_MEMBER";
+export const DELETE_MEMBER = "member/DELETE_MEMBER";

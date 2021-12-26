@@ -5,7 +5,10 @@ import {
     REQUEST_NON_MEMBER,
     REQUEST_UPDATE_LESSON,
 } from "../redux/lesson/lessonTypes";
-import { REQUEST_MEMBER } from "../redux/member/memberTypes";
+import {
+    REQUEST_MEMBER,
+    REQUEST_DELETE_MEMBER,
+} from "../redux/member/memberTypes";
 import {
     REQUEST_DAY_LESSON,
     REQUEST_LESSON_ATTENDANCE,
@@ -16,7 +19,7 @@ import {
     REQUEST_LESSON_PAYMENT,
     UPDATE_NEW_PAYMENT,
 } from "../redux/payment/paymentType";
-import { getAPIs, postAPIs, putAPIs } from "../apis";
+import { getAPIs, postAPIs, putAPIs, deleteAPIs } from "../apis";
 import _ from "lodash";
 
 function* fetchRequest(action) {
@@ -75,6 +78,24 @@ function* putRequest(action) {
     }
 }
 
+function* deleteRequest(action) {
+    let path = action.payload.api.path;
+    let params = action.payload.api.params;
+    let success = action.payload.actions.success;
+    let failure = action.payload.actions.failure;
+
+    if (_.isEmpty(path)) {
+        yield put({ type: failure, error: "API Path is mandatory" });
+    }
+
+    try {
+        const res = yield call(deleteAPIs, { path });
+        yield put({ type: success, payload: res });
+    } catch (error) {
+        yield put({ type: failure, error });
+    }
+}
+
 function* rootSaga() {
     yield takeEvery(
         [
@@ -93,6 +114,7 @@ function* rootSaga() {
         [UPDATE_NEW_PAYMENT, UPDATE_NEW_ATTENDANCE, REQUEST_UPDATE_LESSON],
         putRequest
     );
+    yield takeEvery([REQUEST_DELETE_MEMBER], deleteRequest);
 }
 
 export default rootSaga;

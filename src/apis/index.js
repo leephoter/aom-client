@@ -45,3 +45,17 @@ export const putAPIs = (payload) => {
             return err;
         });
 };
+export const deleteAPIs = (payload) => {
+    let path = payload.path;
+    let body = payload.body;
+    let params = payload.params;
+
+    return axios
+        .delete(`${ENDPOINT}${path}`)
+        .then((res) => {
+            return res.data.result;
+        })
+        .catch((err) => {
+            return err;
+        });
+};

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Row, Col } from "antd";
 import { Input, Icon, Button, Link } from "../../../components";
 import "../../lessons/register/LessonRegister.scss";
+// import "../MemberPage.scss";
 
 import { postMembersAPI } from "../../../apis/members/membersAPI";
 import {
@@ -83,10 +84,10 @@ const MemberRegister = (props) => {
                 </Col>
                 <Col className="footer" span={24}>
                     <Button
-                        to="/members"
-                        className="btn-register"
+                        className="link"
                         label="REGISTER"
                         onClick={registerMember}
+                        to="/members"
                     />
                 </Col>
             </Col>

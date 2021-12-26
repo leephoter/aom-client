@@ -8,8 +8,12 @@ import {
     requestMember,
     updateMemberName,
     updateMemberAge,
+    requestDeleteMember,
 } from "../../../redux/member/memberActions";
-import { REQUEST_MEMBER_ONE } from "../../../redux/member/memberTypes";
+import {
+    REQUEST_MEMBER_ONE,
+    DELETE_MEMBER,
+} from "../../../redux/member/memberTypes";
 
 const MemberOne = (props) => {
     const memberId = props.match.params.memberId;
@@ -81,6 +85,19 @@ const MemberOne = (props) => {
         // console.log("member :>> ", member);
         // dispatch(addMember({ newMember: member }));
     };
+    const deleteOne = () => {
+        console.log("memberId :>> ", memberId);
+        dispatch(
+            requestDeleteMember({
+                api: {
+                    path: `/members/${memberId}`,
+                },
+                actions: {
+                    success: DELETE_MEMBER,
+                },
+            })
+        );
+    };
     return (
         <Row className="LessonOne">
             <Col span={24}>
@@ -96,11 +113,13 @@ const MemberOne = (props) => {
                     {renderInputs()}
                 </Col>
                 <Col className="footer" span={24}>
-                    <Button
+                    <Link
                         className="btn-delete"
                         type="danger"
                         label="DELETE"
-                        // to = "/lessons"해야해서 Link로 바꾸는게 어떤지
+                        onClick={deleteOne}
+                        to="/members"
+                        // 해야해서 Link로 바꾸는게 어떤지
                         // onClick={deleteLesson}
                     />
                     <Button

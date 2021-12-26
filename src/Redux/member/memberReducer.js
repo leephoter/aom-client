@@ -9,6 +9,7 @@ import {
     UPDATE_NEWMEMBER_NAME,
     UPDATE_NEWMEMBER_AGE,
     ADD_MEMBER,
+    DELETE_MEMBER,
 } from "./memberTypes";
 
 const initMembersState = {
@@ -62,6 +63,10 @@ const memberReducer = handleActions(
             },
         }),
         [ADD_MEMBER]: (state, action) => ({
+            ...state,
+            newMember: {},
+        }),
+        [DELETE_MEMBER]: (state, action) => ({
             ...state,
             newMember: {},
         }),

@@ -2,16 +2,19 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Row, Col } from "antd";
 import { Button } from "../../../components";
-import { updatePaymentStatus, updateNewPayment, } from "../../../redux/payment/paymentActions";
+import {
+    updatePaymentStatus,
+    updateNewPayment,
+} from "../../../redux/payment/paymentActions";
 import { SUCCESS_UPDATE_NEW_PAYMENT } from "../../../redux/payment/paymentType";
 import _ from "lodash";
-import "../content.css";
+import "./Payment.scss";
 
 const colors = {
     CARD: "#8db3f0",
     CASH: "#8d1fff",
-    UNDEFINED: "#fa7583"
-}
+    UNDEFINED: "#fa7583",
+};
 
 const labels = [
     { label: "카드", color: colors.CARD },
@@ -34,7 +37,6 @@ const updatingPaymentAPI = {
 };
 
 export default function PaymentContent({ value, payment }) {
-    
     const members = useSelector((state) => state.payment.payment.members);
     const selectedId = useSelector((state) => state.payment.selected);
 
@@ -90,10 +92,10 @@ export default function PaymentContent({ value, payment }) {
             toggleToState[updatedMembers[member].payments[week].state];
         updatingPaymentAPI[
             updatedMembers[member].payments[week].state
-        ].paymentIds.push(targetPaymentId);        
+        ].paymentIds.push(targetPaymentId);
         dispatch(updatePaymentStatus({ update: updatedMembers }));
     };
-    
+
     const content = () =>
         members &&
         members.map((member, index1) => (
@@ -108,7 +110,7 @@ export default function PaymentContent({ value, payment }) {
                                 data-week={index2}
                                 data-id={payment.id}
                                 onClick={updatedEach}
-                                style={{background: colors[payment.state]}}
+                                style={{ background: colors[payment.state] }}
                             />
                         );
                     })}
@@ -146,24 +148,24 @@ export default function PaymentContent({ value, payment }) {
     };
 
     const renderLabels = () => {
-
         return labels.map((item) => {
-            return <div className="label-item">
-                <div className="color" style={{background: item.color}}>
+            return (
+                <div className="label-item">
+                    <div
+                        className="color"
+                        style={{ background: item.color }}
+                    ></div>
+                    <div className="label">{item.label}</div>
                 </div>
-                <div className="label">
-                    {item.label}
-                </div>
-            </div>
-        })
-    }
+            );
+        });
+    };
 
     const renderTables = () => {
-        return <Row>
+        return (
+            <Row>
                 <Col className="content-header" span={24}>
-                    <div className="label-box">
-                        { renderLabels() }
-                    </div>
+                    <div className="label-box">{renderLabels()}</div>
                     <div className="button-box">
                         <Button
                             className="btn-update"
@@ -177,6 +179,7 @@ export default function PaymentContent({ value, payment }) {
                     {content()}
                 </Col>
             </Row>
+        );
     };
     // 필요한 화면 render
 

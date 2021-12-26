@@ -38,11 +38,11 @@ const MemberPage = () => {
                     <span className="title">Members</span>
                 </Col>
                 <Col className="sub-header" span={24}>
-                    <Button
+                    {/* <Button
                         className="btn-remove"
                         type="danger"
                         label="REMOVE"
-                    />
+                    /> */}
                     <Link
                         to="/members/register"
                         type="primary"

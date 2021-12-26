@@ -2,15 +2,8 @@ import React from "react";
 import { Row, Col } from "antd";
 import "./Table.scss";
 
-/***
- *  columns = [
- *      { "title": "Title", "dataIndex": "title" }
- *  ]
- */
-
 const Table = (props) => {
     const { columns, dataSource, moveTo } = props;
-
     const renderHeader = () => {
         return (
             <thead>
@@ -29,6 +22,19 @@ const Table = (props) => {
             <tbody>
                 {dataSource &&
                     dataSource.map((rows, index) => {
+                        console.log(`dataSource`, dataSource);
+                        if (dataSource[0].endTime) {
+                            dataSource[0].endTime = dataSource[0].endTime.slice(
+                                11,
+                                16
+                            );
+                        }
+                        if (dataSource[0].startTime) {
+                            dataSource[0].startTime = dataSource[0].startTime.slice(
+                                11,
+                                16
+                            );
+                        }
                         return (
                             <tr
                                 key={index}

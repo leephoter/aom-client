@@ -8,7 +8,7 @@ import { SUCCESS_UPDATE_NEW_ATTENDANCE } from "../../../redux/attendance/attenda
 import { Button } from "../../../components";
 import _ from "lodash";
 import "../content.css";
-import "./Attendance.scss";
+// import "./Attendance.scss";
 import { Row } from "antd";
 
 const toggleToState = {
@@ -80,11 +80,6 @@ export default function AttendanceContent({ value, attendance }) {
         ].attendanceIds.push(targetAttendanceId);
         dispatch(updateAttStatus({ update: updatedMembers }));
     };
-    // console.log("ABSENT :>> ", updatingAttendanceAPI.ABSENT.attendanceIds);
-    // console.log(
-    //     "ATTENDANCE :>> ",
-    //     updatingAttendanceAPI.ATTENDANCE.attendanceIds
-    // );
 
     const content = () =>
         members &&
@@ -106,12 +101,9 @@ export default function AttendanceContent({ value, attendance }) {
                             </button>
                         );
                     })}
-                    {/* <a className="part">{"all"}</a> */}
                 </div>
             </>
         ));
-
-    // 배열의 인덱스> vs id 값?  >> 로직
 
     const updateAttendance = () => {
         alert("UPDATE!!");
@@ -159,7 +151,7 @@ export default function AttendanceContent({ value, attendance }) {
     };
 
     const renderEmpty = () => {
-        return <div>NO MEMBERS</div>;
+        return <div className="danger lineUpCenter">NO MEMBERS</div>;
     };
 
     // // 배열의 인덱스> vs id 값?  >> 로직
